@@ -1,52 +1,78 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
 
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+    http://www.apache.org/licenses/LICENSE-2.0
 
-.box {
-  font: 10px sans-serif;
-}
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <style>
+        .box {
+              font: 10px sans-serif;
+            }
 
-.box line,
-.box rect,
-.box circle {
-  fill: steelblue;
-  stroke: #000;
-  stroke-width: 1px;
-}
+            .box line,
+            .box rect,
+            .box circle {
+              fill: steelblue;
+              stroke: #000;
+              stroke-width: 1px;
+            }
 
-.box .center {
-  stroke-dasharray: 3,3;
-}
+            .box .center {
+              stroke-dasharray: 3,3;
+            }
 
-.box .outlier {
-  fill: none;
-  stroke: #000;
-}
+            .box .outlier {
+              fill: none;
+              stroke: #000;
+            }
 
-.axis {
-  font: 12px sans-serif;
-}
- 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
- 
-.x.axis path { 
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-</style>
-<body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+            .axis {
+              font: 12px sans-serif;
+            }
+             
+            .axis path,
+            .axis line {
+              fill: none;
+              stroke: #000;
+              shape-rendering: crispEdges;
+            }
+             
+            .x.axis path { 
+              fill: none;
+              stroke: #000;
+              shape-rendering: crispEdges;
+            }
+    </style>
+    <body>
+        
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="js/d3.v3.min.js"></script>
 <script src="js/box.js"></script>
 <script>
@@ -195,3 +221,5 @@ function iqr(k) {
 }
 
 </script>
+    </body>
+</html>
