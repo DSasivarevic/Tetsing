@@ -1,192 +1,64 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="js/d3.v3.min.js"></script>
-    <script src="js/box.js"></script>
-    <script>
-    var labels = true; // show the text labels beside individual boxplots?
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Winter Olympics</title>
+    <link href="css/ionic.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="lib/xcharts.css" rel="stylesheet">
+</head>
 
-    var margin = {top: 30, right: 50, bottom: 70, left: 50};
-    var  width = 800 - margin.left - margin.right;
-    var height = 400 - margin.top - margin.bottom;
-        
-    var min = Infinity,
-        max = -Infinity;
-        
-    // parse in the data    
-    d3.csv("data.csv", function(error, csv) {
-        // using an array of arrays with
-        // data[n][2] 
-        // where n = number of columns in the csv file 
-        // data[i][0] = name of the ith column
-        // data[i][1] = array of values of ith column
+<body>
 
-        var data = [];
-        data[0] = [];
-        data[1] = [];
-        data[2] = [];
-        data[3] = [];
-        // add more rows if your csv file has more columns
+<div id="left-nav">
+    <div class="welcome">Welcome, Christophe</div>
+    <div class="title">Menu</div>
+    <ul class="list">
+        <li class="list-item">
+            <a class="item-content" href="#dashboard/1">
+                <i class="ion-stats-bars"></i>
+                <h3>Dashboard 1</h3>
+                <p>Medals by country</p>
+            </a>
+        </li>
+        <li class="list-item">
+            <a class="item-content" href="#dashboard/2">
+                <i class="ion-pie-graph"></i>
+                <h3>Dashboard 2</h3>
+                <p>Pie chart example</p>
+            </a>
+        </li>
+        <li class="list-item">
+            <a class="item-content" href="#dashboard/3">
+                <i class="ion-connection-bars"></i>
+                <h3>Dashboard 3</h3>
+                <p>Four charts drill-down</p>
+            </a>
+        </li>
+    </ul>
+</div>
 
-        // add here the header of the csv file
-        data[0][0] = "T(15)";
-        data[1][0] = "Mono";
-        data[2][0] = "HCM";
-        data[3][0] = "PCC";
-        // add more rows if your csv file has more columns
+<div id="container" class="transition">
+    <header class="bar bar-header nav-bar bar-stable">
+        <button id="btn-menu" class="button button-icon" style="font-size: 22px;"><i class="ion-navicon-round"></i></button>
+        <h1 class="title">Winter Olympics Dashboard</h1>
+    </header>
+    <div id="content"></div>
+</div>
 
-        data[0][1] = [];
-        data[1][1] = [];
-        data[2][1] = [];
-        data[3][1] = [];
-      
-        csv.forEach(function(x) {
-            var v1 = Math.floor(x.Q1),
-                v2 = Math.floor(x.Q2),
-                v3 = Math.floor(x.Q3),
-                v4 = Math.floor(x.Q4);
-                // add more variables if your csv file has more columns
-                
-            var rowMax = Math.max(v1, Math.max(v2, Math.max(v3,v4)));
-            var rowMin = Math.min(v1, Math.min(v2, Math.min(v3,v4)));
+<script src="cordova.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/fastclick.js"></script>
+<script src="lib/d3.v3.min.js"></script>
+<script src="lib/xcharts.js"></script>
+<script src="data.js"></script>
+<script src="summary.js"></script>
 
-            data[0][1].push(v1);
-            data[1][1].push(v2);
-            data[2][1].push(v3);
-            data[3][1].push(v4);
-             // add more rows if your csv file has more columns
-             
-            if (rowMax > max) max = rowMax;
-            if (rowMin < min) min = rowMin; 
-        });
-      
-        var chart = d3.box()
-            .whiskers(iqr(1.5))
-            .height(height) 
-            .domain([min, max])
-            .showLabels(labels);
+<script src="js/dashboard1.js"></script>
+<script src="js/dashboard2.js"></script>
+<script src="js/dashboard3.js"></script>
+<script src="js/app.js"></script>
 
-        var svg = d3.select("body").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .attr("class", "box")    
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        
-        // the x-axis
-        var x = d3.scale.ordinal()     
-            .domain( data.map(function(d) { console.log(d); return d[0] } ) )       
-            .rangeRoundBands([0 , width], 0.7, 0.3);        
-
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
-
-        // the y-axis
-        var y = d3.scale.linear()
-            .domain([min, max])
-            .range([height + margin.top, 0 + margin.top]);
-        
-        var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left");
-
-        // draw the boxplots    
-        svg.selectAll(".box")      
-          .data(data)
-          .enter().append("g")
-            .attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
-          .call(chart.width(x.rangeBand())); 
-        
-              
-        // add a title
-        svg.append("text")
-            .attr("x", (width / 2))             
-            .attr("y", 0 + (margin.top / 2))
-            .attr("text-anchor", "middle")  
-            .style("font-size", "18px") 
-            //.style("text-decoration", "underline")  
-            .text("Gene:" + "CCL5");
-     
-         // draw y axis
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text") // and text1
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
-              .style("font-size", "16px") 
-              .text("");        
-        
-        // draw x axis  
-        svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
-          .call(xAxis)
-          .append("text")             // text label for the x axis
-            .attr("x", (width / 2) )
-            .attr("y",  10 )
-            .attr("dy", ".71em")
-            .style("text-anchor", "middle")
-            .style("font-size", "16px") 
-            .text(""); 
-    });
-
-    // Returns a function to compute the interquartile range.
-    function iqr(k) {
-      return function(d, i) {
-        var q1 = d.quartiles[0],
-            q3 = d.quartiles[2],
-            iqr = (q3 - q1) * k,
-            i = -1,
-            j = d.length;
-        while (d[++i] < q1 - iqr);
-        while (d[--j] > q3 + iqr);
-        return [i, j];
-      };
-    }
-
-    </script>
-    </body>
+</body>
 </html>
