@@ -53,6 +53,7 @@ body {
     <body>
 
         <div id="viz"></div>
+        <div id="jizz"></div>
 
 
         <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -126,7 +127,7 @@ d3.csv("cars.csv", function(error, csv) {
     .domain([min, max])
     .showLabels(labels);
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#jizz").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("class", "box")    
