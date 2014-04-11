@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>D3 Test</title>
         <script src="http://d3js.org/d3.v3.min.js"></script>
+
         <style>
 
 body {
@@ -65,6 +66,15 @@ body {
 
 
 <script type="text/javascript">
+
+alert("hej");
+d3.text('cars.csv', function(error, _data){
+            var data = d3.csv.parseRows(_data);
+            console.log("hej");
+            console.log("data");
+            console.log("hej");
+
+        });
 var labels = true; // show the text labels beside individual boxplots?
 
 var margin = {top: 30, right: 50, bottom: 70, left: 50};
@@ -75,7 +85,7 @@ var min = Infinity,
     max = -Infinity;
   
 // parse in the data  
-d3.csv("cars.csv1", function(error, csv) {
+d3.csv("cars.csv", function(error, csv) {
   // using an array of arrays with
   // data[n][2] 
   // where n = number of columns in the csv file 
