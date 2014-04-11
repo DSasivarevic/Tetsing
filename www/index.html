@@ -71,9 +71,11 @@ d3.text('cars.csv', function(error, _data){
             var data = d3.csv.parseRows(_data);
             console.log("hej");
             console.log(data);
+                      alert("Hello I am in");
+                       d3.select("#viz").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 65).style("fill", "red");
+
 
         });
-          alert("Hello I am in");
 
 var labels = true; // show the text labels beside individual boxplots?
 
