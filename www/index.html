@@ -67,14 +67,14 @@ body {
 
 <script type="text/javascript">
 
-alert("hej");
 d3.text('cars.csv', function(error, _data){
             var data = d3.csv.parseRows(_data);
             console.log("hej");
-            console.log("data");
-            console.log("hej");
+            console.log(data);
 
         });
+          alert("Hello I am in");
+
 var labels = true; // show the text labels beside individual boxplots?
 
 var margin = {top: 30, right: 50, bottom: 70, left: 50};
